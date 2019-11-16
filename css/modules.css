@@ -1,0 +1,39 @@
+section article, aside, div{
+  text-align: center;
+  float: left;
+  padding: 40px;
+  border: #55024a;
+  display: block;  
+}
+
+
+
+
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    color: rgb(129, 2, 97);
+    font-weight: bolder;-weight: bolder; 
+  }
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+  color: rgb(4, 88, 94);
+  font-weight: inherit;
+}
+ 
+  
+  
+    p {
+      color: #55024a;
+      font-size: 10px;
+    }
+  
+
+  img {
+    object-fit: contain;
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+  }
