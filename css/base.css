@@ -1,32 +1,38 @@
+body {
+  margin: auto;
+  padding: 111px;
+  background-image: url('https://www.wallpaperflare.com/static/806/890/536/simple-background-blurred-colorful-yellow-background-wallpaper.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-weight: bolder;
 
+}
+
+
+footer {
+  flex: auto;
+  margin-top: 7000px;
+  size:100px;
+      border-radius: 20px;
+      color: rgb(121, 3, 91);
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    
+
+header { 
   
-  img {
-    max-width: 100%;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  color: rgb(129, 2, 97);
+  font: 35px Papyrus, fantasy;
+  min-width: 924px;
+  display: block;
+  min-height: 120px;
+  margin-top: -3px;
+  position: relative;
+  left: -5px;
   }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 15px auto;
-  }
-  
-
-  
- 
-  
-  div {
-
-    box-shadow: 0 10px 6px -6px #777;
-    border: 2px inset lightGray;
-    padding: 20px;
-    width: 320px;
-    height: 400px;
-    margin: 50px;
-    background-color: bisque;
-  }
-  

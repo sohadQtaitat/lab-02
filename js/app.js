@@ -1,64 +1,61 @@
 'use strict';
-function Horn(data) {
-    this.image_url = data.image_url;
-    this.title = data.title;
-    this.horns = data.horns;
-    this.description = data.description;
-    this.keyword = data.keyword;
-    Horn.all.push(this);
+
+function Horns(data) {
+  this.image_url = data.image_url;
+  this.title = data.title;
+  this.description = data.description;
+  this.keyword = data.keyword;
+  this.horns = data.horns;
+  Horns.all.push(this);
 }
-Horn.all = [];
+Horns.all = [];
 
+Horns.prototype.render = function() {
 
+  // Create a new empty div tag
+  let hornOutput = $('<div></div>');
+      hornOutput.addClass(this.keyword);
 
-Horn.prototype.render = function () {
-    let eachHorn = $('<div></div>');
-    eachHorn.addClass(this.keyword);
-    let template = $('#photo-template').html();
-    eachHorn.html(template);
+  // clone (copy) the html from inside the photo-template
+  let template = $('#photo_test').html();
 
-    eachHorn.find('h2').text(this.title);
-    eachHorn.find('img').attr('src', this.image_url);
-    eachHorn.find('p').text(this.description);
+  // Add the template to the output div
+  hornOutput.html( template );
 
-    $('main').append(eachHorn);
+  // Put the data in
+  hornOutput.find('h2').text( this.title );
+  hornOutput.find('img').attr('src', this.image_url);
+  hornOutput.find('p').text(this.description);
 
+  $('main').append(hornOutput);
+
+};
+
+function populateSelectBox() {
+  let seen = {};
+  let select = $('select');
+  Horns.all.forEach( (horn) => {
+    if ( ! seen[horn.keyword] ) {
+      let option = `<option value="${horn.keyword}">${horn.keyword}</option>`;
+      select.append(option);
+      seen[horn.keyword] = true;
+    }
+  });
+
+  console.log(seen);
 }
 
-function selectBox() {
-    let select = $('select');
-    let seen = {};
-    Horn.all.forEach((horn) => {
-        if (!seen[horn.keyword]) {
-
-            let option = `<option value="${horn.keyword}">${horn.keyword}</option>`;
-            select.append(option);
-            seen[horn.keyword] = true;
-        }
-
-    });
-}
-
-
-
-$('select').on('change', function () {
-    let selected = $(this).val();
-    $('div').hide();
-    $(`.${selected}`).fadeIn(800);
+$('select').on('change', function() {
+  let selected = $(this).val();
+  $('div').hide();
+  $(`.${selected}`).fadeIn(800);
 });
 
-
-
-
-$.get('../data/page-1.json').then(data => {
-    data.forEach(items => {
-        let horn = new Horn(items);
-
-        horn.render();
-
+$.get('../data/page-1.json')
+  .then( data => {
+    data.forEach( (thing) => {
+      let horn = new Horns(thing);
+      horn.render();
     });
-    console.log(data);
-})
-    .then(() => {
-        selectBox();
-    });
+  })
+  .then( () => populateSelectBox() );
